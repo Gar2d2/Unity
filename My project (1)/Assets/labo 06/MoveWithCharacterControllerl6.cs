@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class MoveWithCharacterControllerl6 : MonoBehaviour
 {
-    private CharacterController controller;
-    private Vector3 playerVelocity;
+    public CharacterController controller;
+    public Vector3 playerVelocity;
     private bool groundedPlayer;
     private float playerSpeed = 8.0f;
     private float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
     private float pushPower = 2.0f;
-
+    public float GetJumpForce()
+    {
+        return Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+    }
     private void Start()
     {
         // zak³adamy, ¿e komponent CharacterController jest ju¿ podpiêty pod obiekt
@@ -34,7 +37,7 @@ public class MoveWithCharacterControllerl6 : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && groundedPlayer)
         {
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+            playerVelocity.y += GetJumpForce();
         }
 
         // zgodnie ze wzorem y = (1/2 * g) * t-kwadrat, ale jednak w trybie play
