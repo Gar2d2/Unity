@@ -25,7 +25,7 @@ public class Zadanie4 : MonoBehaviour
 
         Vector3 rot = transform.rotation.eulerAngles + new Vector3(-mouseYMove, mouseXMove , 0f); 
 
-        var x = rot.x + 360;
+        var x = rot.x + 360 ;
         x = Mathf.Clamp(x, 270, 450);
         x -= 360;
         if(x<0)
